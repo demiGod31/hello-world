@@ -1,0 +1,113 @@
+import java.util.*;
+public class Date {
+	
+	static boolean okay(int d,int m)
+	{
+		if(d<1 || d>31)
+			return false;
+		else
+			return true;
+		
+	}
+
+	public static void main(String[] args) {
+		
+		int k=-1,pos=0,pos1=0,m=0;
+		Scanner sc=new Scanner(System.in);
+		int arr[]=new int[6];
+		int br[]=new int[4];
+		String s1=sc.nextLine();
+		String s[]=s1.split(",");
+		for(int i=0;i<6;i++)
+		{
+			arr[i]=Integer.parseInt(s[i]);
+		}
+		for(int i=0;i<6;i++)
+		{
+			if(arr[i]==1)
+			{
+				for(int j=0;j<i;j++)
+				{
+					if(arr[j]==0)
+					{
+						k=0;
+						pos=i;
+						pos1=j;
+						break;
+					}
+						
+				}
+				for(int j=i+1;j<6;j++)
+				{
+					if(arr[j]==1)
+					{
+						k=1;
+						pos=i;
+						pos1=j;
+					}
+					if(arr[j]==2)
+					{
+						k=2;
+						pos=i;
+						pos1=j;
+						break;
+					}
+				}
+			}
+		}
+		if(k!=-1)
+		{
+			m=10+k;
+			int p=0;
+			for(int i=0;i<6;i++)
+			{
+				if(i==pos||i==pos1)
+					continue;
+				else
+				{
+					br[p]=arr[i];
+					p++;
+				}
+			}
+		}
+		else
+		{
+			if(arr[0]==0)
+			{
+				int p=0;
+				m=arr[5];
+				for(int i=1;i<5;i++)
+				{
+					br[p]=arr[i];
+					p++;
+				}
+			}
+			else
+			{
+				System.out.print("0");
+				System.exit(0);
+			}
+		}
+		int q=-1;
+		for(int i=3;i>=0;i--)
+		{
+			for(int j=3;j>=0;j--)
+			{
+				if(i==j)
+					continue;
+				if(okay(br[i]*10+br[j],m))
+				{
+					q=1;
+					System.out.print(m+"/"+(br[i]*10+br[j]));
+					System.exit(0);
+					
+				}
+					
+			}
+		}
+		if(q==-1)
+			System.out.print("0");
+				
+	}
+
+}
