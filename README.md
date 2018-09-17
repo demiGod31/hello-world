@@ -1,2 +1,2 @@
 # hello-world
-Starting off with GitHub.
+Different codes done for practice or other purposes
